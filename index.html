@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phillip Sussman · Systems Administrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEEEF; --surface:#FFFFFF; --ink:#1E2124; --muted:#555B61; --line:#C9CDD1;
+  --gun:#4E5052; --tag:#B3121F; --tag-ink:#FFFFFF; --link:#1F4E79;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1A1C1E; --surface:#24272A; --ink:#E6E8EA; --muted:#A3A9AF; --line:#3A3F44;
+    --gun:#8C9196; --tag:#D3283A; --tag-ink:#FFFFFF; --link:#8DB8E0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1A1C1E; --surface:#24272A; --ink:#E6E8EA; --muted:#A3A9AF; --line:#3A3F44;
+  --gun:#8C9196; --tag:#D3283A; --tag-ink:#FFFFFF; --link:#8DB8E0;
+  color-scheme: dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Barlow",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--tag);outline-offset:3px;border-radius:2px}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;line-height:1.05;margin:0}
+
+/* hero */
+header{padding:4.5rem 0 3rem;border-bottom:1px solid var(--line)}
+.plate{display:inline-flex;gap:.75rem;align-items:center;color:var(--muted);font-weight:500;margin-bottom:1.25rem}
+.plate span{border:1px solid var(--line);padding:.15rem .6rem;border-radius:3px;background:var(--surface)}
+h1{font-size:clamp(3.2rem,11vw,6.5rem);letter-spacing:-.01em;color:var(--ink)}
+.lede{max-width:40rem;font-size:1.25rem;color:var(--ink);margin:1.25rem 0 2rem}
+.links{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 1.1rem;border:1px solid var(--ink);border-radius:4px;color:var(--ink);text-decoration:none;font-weight:600;background:transparent}
+.btn:hover{background:var(--ink);color:var(--bg)}
+
+section{padding:3.25rem 0;border-bottom:1px solid var(--line)}
+section > h2{font-size:2.25rem;margin-bottom:1.75rem;color:var(--gun)}
+
+/* experience timeline */
+.job{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.when{color:var(--muted);font-weight:500}
+.job h3{font-size:1.6rem}
+.org{color:var(--muted);margin:.15rem 0 .75rem}
+.job ul{margin:0;padding-left:1.1rem}
+.job li{margin:.3rem 0}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.25rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1.4rem}
+.proj h3{font-size:1.45rem;margin-bottom:.4rem}
+.proj p{margin:.4rem 0 .8rem;color:var(--ink)}
+.stack{color:var(--muted);font-size:.95rem;margin:0 0 .6rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.5rem 2rem}
+.skills h3{font-size:1.25rem;margin-bottom:.35rem}
+.skills p{margin:0;color:var(--ink)}
+
+.bg-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem 2rem;margin:0}
+.bg-list dt{font-weight:600}
+.bg-list dd{margin:0;color:var(--muted)}
+
+/* contact with remove-before-flight tag */
+footer{padding:3.5rem 0 4rem}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:2rem}
+.tag{position:relative;display:inline-flex;align-items:center;gap:1rem;background:var(--tag);color:var(--tag-ink);text-decoration:none;padding:1rem 1.6rem 1rem 2.6rem;border-radius:4px;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:1.6rem;line-height:1.1;min-height:44px;transform:rotate(-2deg);transition:transform .2s ease}
+.tag::before{content:"";position:absolute;left:.9rem;top:50%;width:.75rem;height:.75rem;margin-top:-.375rem;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 2px rgba(0,0,0,.25)}
+.tag:hover{transform:rotate(0deg)}
+.tag small{display:block;font-family:"Barlow",sans-serif;font-weight:500;font-size:.85rem;opacity:.95}
+.contact p{margin:0;max-width:26rem;color:var(--muted)}
+
+@media (max-width:640px){
+  header{padding-top:3rem}
+  .job{grid-template-columns:1fr;gap:.4rem}
+}
+@media (prefers-reduced-motion:reduce){.tag{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="plate"><span>Tucson, AZ</span><span>Air Force veteran</span><span>Secret clearance</span></div>
+    <h1>Phillip Sussman</h1>
+    <p class="lede">Systems administrator and support engineer. I keep Windows servers, databases, and networks running, and I write the scripts and tools that stop the same problem from coming back.</p>
+    <nav class="links" aria-label="Contact and profiles">
+      <a class="btn" href="mailto:phillipsussman@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/Sussman-P" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="work">
+    <div class="wrap">
+      <h2>Work</h2>
+
+      <article class="job">
+        <div class="when">Jan 2026 to May 2026</div>
+        <div>
+          <h3>Product Service Specialist</h3>
+          <p class="org">Caterpillar Inc., MineStar</p>
+          <ul>
+            <li>Supported MineStar Windows Servers at customer sites over remote desktop: restarted services, reviewed application logs and Event Viewer for fatal errors, checked IIS, and monitored disk space.</li>
+            <li>Checked PostgreSQL and SQL Server (MSDB) databases for out of date data and jobs during troubleshooting.</li>
+            <li>Restarted services on Linux based onboard units to bring machines back online.</li>
+            <li>Troubleshot network links between haul trucks and the office, checking IP configuration, wireless, and VPN connectivity.</li>
+            <li>Analyzed onboard GNSS data and ionospheric scintillation to diagnose machine positioning issues.</li>
+            <li>Wrote complex SQL (inner and outer joins, unions, INSERT INTO SELECT, updates) to find and fix data issues, and trained coworkers to use these queries to catch errors in client workflows.</li>
+            <li>Wrote technical documentation and partnered with engineering on product fixes.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">Dec 2023 to Jan 2026</div>
+        <div>
+          <h3>Network Analyst</h3>
+          <p class="org">TEKsystems, contracted to Caterpillar (Product Service Engineer role)</p>
+          <ul>
+            <li>Built C# .NET tools using Entity Framework to manage MineStar databases, plus data visualization dashboards for upper management tracking.</li>
+            <li>Developed a C# REST integration on Salesforce Bulk API 2.0 to pull dealer contacts, case data, and change history in bulk, replacing manual lookups.</li>
+            <li>Pulled CPI and NPI data from a Linux NAS database hosted out of Caterpillar’s Peoria office.</li>
+            <li>Managed Azure resources in the portal, including VMs and SQL databases, and handled Entra ID and Active Directory group membership and conditional access policies.</li>
+            <li>Wrote PowerShell scripts that automatically launched required programs when a fresh VM was provisioned, and built Microsoft Power Automate flows that automated repetitive tasks for me and my coworkers.</li>
+            <li>Used Azure DevOps CI/CD pipelines that built automatically on merge, and read through failed build logs to track down what broke; managed code and work items in Azure DevOps repos and boards.</li>
+            <li>Handled ticket intake and triage for dealers and end users by phone, email, and remote desktop.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when">Aug 2017 to Aug 2023</div>
+        <div>
+          <h3>Aircraft Armament Systems Technician</h3>
+          <p class="org">United States Air Force, A-10, Davis Monthan AFB</p>
+          <ul>
+            <li>Directly responsible for 28 aircraft valued at $527M; kept a 100% QA pass rate across technical orders, installs, and repairs on 200+ aircraft with 99% mission schedule effectiveness.</li>
+            <li>Helped improve aircraft readiness 25% by working with leads to cut asset downtime.</li>
+            <li>Trained 5 new technicians on troubleshooting, test equipment, QA, and technical publications.</li>
+            <li>Troubleshot electrical and electronic weapons systems using schematics, technical orders, and calibrated test equipment.</li>
+            <li>Coordinated the turnaround and reconfiguration of 200 missile launcher systems in one week to support Air Force and Navy air superiority missions.</li>
+            <li>Served on load crews supporting the 354th Fighter Squadron, loading and testing munitions on A-10s under strict safety and quality procedures.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="proj">
+          <h3>WaterBnB</h3>
+          <p class="stack">React, Vite, Express, PostgreSQL</p>
+          <p>A rental marketplace for boats, built with three teammates from my Galvanize cohort.</p>
+          <a href="https://github.com/PhillipsPlusThree/waterbnb" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+        <article class="proj">
+          <h3>LSPDFR Callout Pack</h3>
+          <p class="stack">C#, .NET, LSPDFR API, RAGE Plugin Hook</p>
+          <p>Custom police callouts for GTA V, written as a plugin for the LSPDFR mod.</p>
+          <a href="https://github.com/Sussman-P" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+        <article class="proj">
+          <h3>React To Do App</h3>
+          <p class="stack">React, Vite, Express, PostgreSQL</p>
+          <p>A full stack task tracker with a REST API and user login.</p>
+          <a href="https://github.com/Sussman-P/React-Todo-App" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+        <article class="proj">
+          <h3>Stock Portfolio API</h3>
+          <p class="stack">ASP.NET, Entity Framework, MS SQL</p>
+          <p>A back end API with full CRUD on stock holdings.</p>
+          <a href="https://github.com/Sussman-P/REST-API-EntityFramework" target="_blank" rel="noopener">View on GitHub</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Systems</h3><p>Windows Server, IIS, Event Viewer, Linux, macOS, Microsoft 365</p></div>
+        <div><h3>Cloud and identity</h3><p>Azure VMs and SQL, Entra ID, Active Directory, conditional access</p></div>
+        <div><h3>Databases</h3><p>SQL Server, PostgreSQL, complex queries and data fixes</p></div>
+        <div><h3>Scripting and code</h3><p>PowerShell, Python, C# and .NET, REST APIs, JavaScript</p></div>
+        <div><h3>DevOps</h3><p>Git, GitHub, Azure DevOps, Docker, Power Automate</p></div>
+        <div><h3>Support</h3><p>Tier 2 troubleshooting, ticket triage, network and VPN, documentation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="wrap">
+      <h2>Background</h2>
+      <dl class="bg-list">
+        <div><dt>Galvanize</dt><dd>Software Engineering Immersive, 2023</dd></div>
+        <div><dt>Full Sail University</dt><dd>BS, Digital Cinematography, 2026</dd></div>
+        <div><dt>Certifications</dt><dd>Foundational C# with Microsoft, MSHA</dd></div>
+        <div><dt>Languages</dt><dd>English and Portuguese, both fluent</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap contact">
+    <a class="tag" href="mailto:phillipsussman@gmail.com">Let’s talk<small>phillipsussman@gmail.com</small></a>
+    <p>Open to systems administration, IT support, and DevOps roles in Tucson or remote.</p>
+  </div>
+</footer>
+</body>
+</html>
